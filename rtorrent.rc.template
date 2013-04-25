@@ -1,7 +1,7 @@
 #
 #
 # The Seedbox From Scratch Script
-#   By Notos ---> https://github.com/Notos/
+#   By Notos ---> https://github.com/Notos/ personalized for mannix
 #
 #
 ######################################################################
@@ -50,8 +50,8 @@ max_peers = 100
 # same as above but for seeding completed torrents (-1 = same as downloading) 
 # throttle.min_peers.seed.set = 25
 # throttle.max_peers.seed.set = 60 
-min_peers_seed = 25 
-max_peers_seed = 60 
+#min_peers_seed = 25 
+#max_peers_seed = 60 
  
 # tracker_numwant = -1
 trackers.numwant.set = -1
@@ -76,7 +76,7 @@ session = /home/<username>/downloads/.session
 # 
 # port range to use for listening 
 # network.port_range.set = 99888-99888 
-port_range = 99888-99888 
+port_range = 51103-51275 
  
 # start opening ports at a random position within the port range 
 # network.port_random.set = yes 
@@ -132,7 +132,8 @@ peer_exchange = no
 # dd:hh:mm:ss e.g. to start a task every day at 18:00, use 18:00:00,24:00:00. 
 # commands: stop_untied =, close_untied =, remove_untied = 
 # stop, close or remove the torrents that are tied to filenames that have been deleted 
- 
+stop_untied =
+
 # watch a directory for new torrents, and stop those that have been deleted
 schedule = watch_directory,5,5,load_start=/home/<username>/downloads/watch/*.torrent
 schedule = untied_directory,5,5,stop_untied= 
@@ -153,7 +154,7 @@ schedule = low_diskspace,5,60,close_low_diskspace=100M
  
 # when the torrent finishes, it executes "mv -n <base_path> /home/$NEWUSER1/Download/" 
 # and then sets the destination directory to "/home/$NEWUSER1/Download/". (0.7.7+)
-# on_finished = move_complete,"execute=mv,-u,$d.get_base_path=,/home/<username>/downloads/complete/ ;d.set_directory=/home/<username>/downloads/complete/"
+on_finished = move_complete,"execute=mv,-u,$d.get_base_path=,/home/<username>/downloads/complete/ ;d.set_directory=/home/<username>/downloads/complete/"
  
 # network.scgi.open_port = 127.0.0.1:5995 
 scgi_port = 127.0.0.1:5995 
@@ -238,8 +239,8 @@ system.file.split_suffix.set = .part
 
 # set whether the client should try to connect to UDP trackers
 # use_udp_trackers = yes
-trackers.use_udp.set = yes
-use_udp_trackers = yes
+trackers.use_udp.set = no
+use_udp_trackers = no
 
 # use a http proxy. [url] ;an empty string disables this setting
 # http_proxy =
@@ -261,23 +262,23 @@ use_udp_trackers = yes
 # alternate keyboard mappings
 # qwerty | azerty | qwertz | dvorak
 # key_layout = dvorak
-# keys.layout.set = dvorak
+keys.layout.set = qwertz
 
 ################ If you need log, uncomment (remove ######) from all lines below
 ######
-######log.open_file = "rtorrent", ~/log/rtorrent.log
-######log.open_file = "tracker", ~/log/tracker.log
-######log.open_file = "storage", ~/log/storage.log
-######
-######log.add_output = "info", "rtorrent"
-######log.add_output = "critical", "rtorrent"
-######log.add_output = "error", "rtorrent"
-######log.add_output = "warn", "rtorrent"
-######log.add_output = "notice", "rtorrent"
-######log.add_output = "debug", "rtorrent"
-######
-######log.add_output = "dht_debug", "tracker"
-######log.add_output = "tracker_debug", "tracker"
-######
-######log.add_output = "storage_debug", "storage"
-######
+log.open_file = "rtorrent", ~/log/rtorrent.log
+log.open_file = "tracker", ~/log/tracker.log
+log.open_file = "storage", ~/log/storage.log
+
+log.add_output = "info", "rtorrent"
+log.add_output = "critical", "rtorrent"
+log.add_output = "error", "rtorrent"
+log.add_output = "warn", "rtorrent"
+log.add_output = "notice", "rtorrent"
+log.add_output = "debug", "rtorrent"
+
+log.add_output = "dht_debug", "tracker"
+log.add_output = "tracker_debug", "tracker"
+
+log.add_output = "storage_debug", "storage"
+
